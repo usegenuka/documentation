@@ -46,15 +46,10 @@
               "api-reference/errors",
               "---",
               "# Authentication",
-              "api-reference/endpoint/authentication/register",
-              "api-reference/endpoint/authentication/login",
-              "api-reference/endpoint/authentication/user",
+             
               "---",
-              "# Applications",
-              "api-reference/endpoint/application/create",
-              "api-reference/endpoint/application/update",
-              "api-reference/endpoint/application/list",
-              "api-reference/endpoint/application/review"
+              "# Applications"
+       
             ]
           }
         ]
