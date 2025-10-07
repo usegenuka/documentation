@@ -1,0 +1,166 @@
+---
+title: 'API Reference'
+description: "Complete Genuka API documentation to integrate the all-in-one business management platform into your applications."
+---
+
+<Card title="Genuka API Reference" icon="box" vertical>
+  Welcome to the complete Genuka API documentation. This REST API allows you to integrate all the features of our business management platform into your applications.
+</Card>
+
+## Getting started
+
+<Columns cols={2}>
+  <Card title="Base URLs" icon="globe">
+    ```js
+    https://api.genuka.com
+    ```
+  </Card>
+  <Card title="Authentication" icon="key">
+     ```js
+   Authorization: YOUR_PUBLIC_KEY
+    ```
+  </Card>
+</Columns>
+
+
+## What you can do with the Genuka API
+
+The Genuka API enables you to create powerful integrations to manage all aspects of a business:
+
+<CardGroup cols={2}>
+  <Card title="Product Management" icon="box">
+    Create, modify, and manage your products, collections, and inventory
+  </Card>
+  <Card title="Orders & Invoices" icon="file-invoice">
+    Process orders, generate invoices, and track payments
+  </Card>
+  <Card title="Customer Management (CRM)" icon="users">
+    Manage customer profiles, purchase history, and segmentation
+  </Card>
+  <Card title="Analytics & Reports" icon="chart-bar">
+    Access sales data, profits, and business trend insights
+  </Card>
+</CardGroup>
+
+## Prerequisites
+
+Before getting started, you need to:
+
+1. **Create a developer account** on [Genuka](https://genuka.com)
+2. **Obtain your API keys** from your developer dashboard
+3. **Configure your environment** for testing or production
+
+<Note>
+Developer access is currently in beta. Contact our team to get access.
+</Note>
+
+## API Environments
+
+| Environment | Base URL | Usage |
+|-------------|----------|-------|
+| **Production** | `https://api.genuka.com` | Production applications |
+| **Sandbox** | `...not sandbox for now, try it localy` | Development and testing |
+
+## Authentication
+
+All API calls require authentication via a Bearer token in the Authorization header:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+### Request Example
+
+```bash
+curl -X GET https://api.genuka.com/v1/products \
+  -H "Authorization: Bearer gk_live_abcd1234..." \
+  -H "Content-Type: application/json"
+```
+
+## Response Format
+
+All API responses follow a standardized JSON format:
+
+```json
+{
+  
+  "id": "fkk3kk45jdjdj", // uuid
+  "name": "Example Product",
+  "price": 25000,
+  "currency": "XAF",
+}
+```
+
+
+## HTTP Status Codes
+
+| Code | Meaning | Description |
+|------|---------|-------------|
+| **200** | OK | Successful request |
+| **201** | Created | Resource created successfully |
+| **400** | Bad Request | Invalid parameters |
+| **401** | Unauthorized | Invalid or missing API token |
+| **403** | Forbidden | Access denied |
+| **404** | Not Found | Resource not found |
+| **429** | Too Many Requests | Rate limit exceeded |
+| **500** | Internal Server Error | Server error |
+
+
+## Core API Resources
+
+<CardGroup cols={2}>
+  <Card title="Products" icon="box" href="/api-reference/endpoint/products">
+    Manage products, variants, and inventory
+  </Card>
+  <Card title="Orders" icon="container" href="/api-reference/endpoint/orders">
+    Process and track orders
+  </Card>
+  <Card title="Customers" icon="user" href="/api-reference/endpoint/customers">
+    CRM management and customer profiles
+  </Card>
+  <Card title="Invoices" icon="file-invoice" href="/api-reference/endpoint/invoices">
+    Invoice generation and management
+  </Card>
+</CardGroup>
+
+## API Versioning
+
+The Genuka API uses URL-based versioning:
+
+- Current version: `v2`
+- Full URL: `https://api.genuka.com/v2/`
+
+New versions are backwards compatible for at least 12 months.
+
+## SDKs and Libraries
+
+<CardGroup cols={1}>
+  <Card title="JavaScript/Node.js" icon="node-js">
+    ```bash
+    npm install genuka-api
+    ```
+  </Card>
+</CardGroup>
+
+## Webhooks
+
+Genuka can send webhook notifications for important events:
+
+- New orders
+- Status changes
+- Stock updates
+- Payments received and other.
+
+[Learn more about webhooks →](/getting-started/webhook)
+
+## Need Help?
+
+<CardGroup cols={2}>
+  <Card title="Technical Support" icon="envelope">
+    [contact@genuka.com](mailto:contact@genuka.com)
+  </Card>
+  <Card title="API Status" icon="newspaper">
+    [status.genuka.com](https://status.genuka.com)
+  </Card>
+</CardGroup>

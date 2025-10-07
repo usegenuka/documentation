@@ -1,0 +1,744 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Test collection",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://genuka-api.test"
+    }
+  ],
+  "paths": {
+    "/2023-11/developer/auth/register": {
+      "parameters": [],
+      "post": {
+        "summary": "Register",
+                "description": "Create new user and company",
+
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Tue, 12 Dec 2023 08:29:20 GMT"
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "chunked"
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "keep-alive"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "no-cache, private"
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer"
+                },
+                "example": "60000"
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer"
+                },
+                "example": "59999"
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Origin"
+              },
+              "CF-Cache-Status": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "DYNAMIC"
+              },
+              "Report-To": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=aS5zvPYTWJzsplqqvP39UchfFNWqGZphJhcxnNGiLXbHSuEKgVrBCouwTa1bOk1pM0VfdggqO%2Bk7XqzhRcmHhEenxsBKQ38usn%2BOXHPTaf0FqyseGOP%2FI2TJIzTkyN%2BuyGEpVwtEMigv\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "cloudflare"
+              },
+              "CF-RAY": {
+                "schema": {
+                  "type": "integer"
+                },
+                "example": "83449945fb5c6f27-CDG"
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "br"
+              },
+              "alt-svc": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "h3=\":443\"; ma=86400"
+              }
+            },
+            "description": "UserRegistered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accessToken": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "string"
+                        },
+                        "client_id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "scopes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "revoked": {
+                          "type": "boolean"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "expires_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    },
+                    "companyId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGU3NDgxOWFhNzY0MGNjNWViZWE2YzVkNjlkMmY5ZDA4NjViOGUzNTM4ZTdiZDFlNWE2ZDMzZGIwYjA0NjY0ZWZhMjIyYzQwMTgyZmFlYzYiLCJpYXQiOjE3MDIzNjk3NTkuODA5MzA1LCJuYmYiOjE3MDIzNjk3NTkuODA5MzEsImV4cCI6MTczMzk5MjE1OS42MjI3MzEsInN1YiI6IjAxaGhlamEzNjhzeHAyeDJuZHFlY243dGo2Iiwic2NvcGVzIjpbIioiXX0.JxJavOQQj4Hry6V6I0NjERorJqQX4rvR7XLZmwCk3kdvat6-vXjQqC-qSW_xvCaYh080fMPOjVmqHa84HgwuQrs50fUrnbcbUOasnr9IlAVA2xSS_9432QyUJkKwfYU9u2k7DRUkF1VzITdqEYZ7oG_BgRd3BRf_N8Ce_4LGaKskL2BSHhpc9CAwXxreYbXsvWYAexZc5B_sOsUDFjBI1Z37pzrVE_OSI0hwVrgYi4VPH3gxLsPtX5idR2HactJ3GGHgnY4TtAlN6HjfPx7_m7-LqllYc85Y4lKBYBNr-pEVYeg6PdzbakYyVCvcm1nnhKxd7tG_kvLtA_IvNgRXpRkZo-rve7P1a5-8wUFLj2vy3hF6NR-hju_rFrpvQRBrUFCvJ7oEFelgfenkoWoQHKmuh9olfsXo6POV1A9cefFRmha5kmZxvh0PPK2kB9NtnpVJisPdk2nbnl7vzuNqWL8XEkBtkfvG2u8YjqvyCFIrea_wV_YEcgdQWKUkhDzjXJCdYtyWULHFtuLZuelwVEegNUEodvDzrdH0pn9BiUDjqN2RMaU5rwkEvKRhp7ow5DwbbMKFJ3UCa1OsQ3BfuA_NRdSib8LyKHvBzCZ5YhP_KwKKFzj2qKQ0VSfvwKdXPdyRPCP6STqvIoBmVO8Wa--LmavltXcaQslNcUeECcg",
+                  "token": {
+                    "id": "0e74819aa7640cc5ebea6c5d69d2f9d0865b8e3538e7bd1e5a6d33db0b04664efa222c40182faec6",
+                    "user_id": "01hheja368sxp2x2ndqecn7tj6",
+                    "client_id": 1,
+                    "name": "John Doe",
+                    "scopes": [
+                      "*"
+                    ],
+                    "revoked": false,
+                    "created_at": "2023-12-12T08:29:19.000000Z",
+                    "updated_at": "2023-12-12T08:29:19.000000Z",
+                    "expires_at": "2024-12-12T08:29:19.000000Z"
+                  },
+                  "companyId": "01hheja204e7hya2rgjgbwxts3"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "company": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "currency_code": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "first_name": {
+                        "type": "string"
+                      },
+                      "last_name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email"
+                      },
+                      "password": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string",
+                        "format": "utc-millisec"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "company": {
+                  "name": "Démo Company",
+                  "currency_code": "XAF"
+                },
+                "user": {
+                  "first_name": "John",
+                  "last_name": "Doe",
+                  "email": "j.doe@hotmail.com",
+                  "password": "password!1234",
+                  "phone": "+2376--------"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/developer/auth/login": {
+      "parameters": [],
+      "post": {
+        "summary": "Login",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "email": "it@genuka.com",
+                "password": "password"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/developer/me": {
+      "parameters": [],
+      "get": {
+        "summary": "User",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/2023-11/developer/apps": {
+      "parameters": [],
+      "get": {
+        "summary": "List",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "example": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "support_email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "redirect_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "webhook_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "medias": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "src": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "collection_name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "terms_of_service_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "privacy_policy_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "example": {
+                "name": "Genuka Templates",
+                "description": "Genuka Templates - Manage your website template",
+                "support_email": "hello@genuka.com",
+                "redirect_url": "http://localhost:3001",
+                "callback_url": "http://localhost:3001/api/callback",
+                "webhook_url": "http://localhost:3001/api/webhook",
+                "scopes": [
+                  "orders.create",
+                  "products.view",
+                  "products.update",
+                  "company.*"
+                ],
+                "medias": [
+                  {
+                    "src": "https://www.freepik.com/icon/layout_13559025#fromView=search&page=1&position=74&uuid=0e9388f9-2855-426e-aa83-98bf2002404e",
+                    "collection_name": "logo"
+                  }
+                ],
+                "terms_of_service_url": "https://genuka.com/terms",
+                "privacy_policy_url": "https://genuka.com/privacy-policy"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/developer/apps/01jtg4cys6gvzn95cw71eeq86b": {
+      "parameters": [],
+      "put": {
+        "summary": "Update",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "logo": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "example": {
+                "logo": "https://www.freepik.com/icon/gift-box_9458402#fromView=keyword&page=1&position=8&uuid=94422456-d9da-4be1-accf-9965f888f863"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "example": {
+                "callback_url": "https://test.com/sdf"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/developer/app-shortcuts": {
+      "parameters": [],
+      "get": {
+        "summary": "List",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "example": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "app_id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "icon": {
+                    "nullable": true
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "color": {
+                    "nullable": true
+                  },
+                  "location": {
+                    "type": "string"
+                  },
+                  "is_active": {
+                    "type": "boolean"
+                  },
+                  "is_external": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "example": {
+                "app_id": "01k1az40v1f44bwbs1rc459dxy",
+                "name": "Imprimer un document",
+                "icon": null,
+                "url": "http://localhost:3001/invoices/quick-print",
+                "color": null,
+                "location": "invoices.details",
+                "is_active": true,
+                "is_external": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/developer/app-shortcuts/01k1dwd1kxcv1mxnd1fpeej6f0": {
+      "parameters": [],
+      "put": {
+        "summary": "Update",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "location": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "location": "returns.details"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/developer/app-shortcuts/01jv5zv26az4jaz1rtctpwt18c": {
+      "parameters": [],
+      "get": {
+        "summary": "Details",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "example": {
+                "url": "http://localhost:4010/invoices/quick-print"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/developer/apps/01jmhfdm66vqpjanm1dht76kp4": {
+      "parameters": [],
+      "delete": {
+        "summary": "Delete",
+        "parameters": [
+          {
+            "name": "X-Company",
+            "in": "header",
+            "required": false,
+            "example": "{{DeveloperCompanyId}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "callback_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              },
+              "example": {
+                "callback_url": "https://test.com/sdf"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2023-11/admin/products": {
+      "parameters": [],
+      "get": {
+        "summary": "List",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

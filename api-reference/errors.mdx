@@ -1,0 +1,59 @@
+---
+title: 'API Errors'
+description: "When making requests to the Genuka API, some may fail. This page describes the structure of error responses, the most common error codes, and best practices for handling them."
+---
+
+## Error Response Format
+
+All errors are returned in a standardized JSON format:
+
+```json
+{
+  "code": 400,
+  "status": "Bad Request",
+  "message": "Invalid request",
+  "errors": {
+    "field_name": ["Error detail"]
+  }
+}
+```
+
+- code: the HTTP status code (e.g., 400, 401, 404, etc.)
+- status: the human-readable status (e.g., Bad Request, Unauthorized)
+- message: a short summary of the error
+- errors: (optional) additional details, often related to field validation
+
+
+Common Error Codes
+
+| HTTP Code | Status                | Description                                                    | Suggested Fix                                                  |
+| --------- | --------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| **400**   | Bad Request           | The request is invalid (missing or malformed parameters).      | Check your request schema and required fields.                 |
+| **401**   | Unauthorized          | Missing or invalid API key.                                    | Include an `Authorization` header with a valid API key.        |
+| **403**   | Forbidden             | The API key does not have sufficient permissions.              | Check your access rights or use a key with proper permissions. |
+| **404**   | Not Found             | The requested resource does not exist.                         | Verify the ID or resource reference.                           |
+| **422**   | Unprocessable Entity  | The data is syntactically correct but violates business rules. | Inspect the `errors` object for field-specific issues.         |
+| **429**   | Too Many Requests     | You have exceeded the request limit.                           | Wait before retrying, implement exponential backoff.           |
+| **500**   | Internal Server Error | An unexpected server error occurred.                           | Retry later, contact support if the issue persists.            |
+
+
+## Troubleshooting
+
+1. Check your request format: Ensure your JSON is valid and matches the required schema.
+2. Authentication: Confirm your API key is correct and that you are using the right environment (test or production).
+3. Inspect error details: The errors object provides specific field-level feedback.
+4. Handle rate limits (429): Implement retry logic with exponential backoff.
+5. Log errors: Store error responses for debugging, but avoid logging sensitive data.
+6. Contact support if issues persist, providing:
+    - the endpoint you called
+    - the payload you sent
+    - the full error response you received
+
+
+
+## Best Practices for Error Handling
+
+1. Implement automatic retries for transient errors (429, 500).
+2. Show clear messages to end users, while keeping detailed logs for developers.
+3. Never expose API keys or sensitive data in error messages.
+4. Test common error cases (missing fields, invalid values, etc.) during development.

@@ -1,0 +1,40 @@
+---
+title: 'Create account'
+openapi: 'POST /2023-11/developer/auth/register'
+playground: "none"
+version: "1.0"
+---
+
+## Overview
+
+The Create Account API allows developers to programmatically register new user accounts on the Genuka platform. This endpoint is essential for applications that need to onboard users directly through their own interface while leveraging Genuka's comprehensive business management features.
+
+<Note>
+This endpoint creates a new user account with basic authentication credentials. After successful registration, users will have access to create and manage their business data through the Genuka platform.
+</Note>
+
+## Use Cases
+
+This API endpoint is typically used for:
+
+- **Custom onboarding flows** - Integrate account creation directly into your application's user experience
+- **Third-party integrations** - Allow other platforms to create Genuka accounts for their users
+
+
+## Security Considerations
+
+- **Password Requirements**: Minimum 8 characters with at least one uppercase letter, one number, and one special character
+- **Rate Limiting**: Account creation is limited to 10 requests per IP address per hour to prevent abuse
+- **Duplicate Prevention**: Email addresses can only be associated with one active account
+
+## Response Data
+
+Upon successful account creation, the API returns:
+
+- **User ID**: Unique identifier for the newly created account
+- **Account Status**: Current status (pending verification, active, etc.)
+- **Access Tokens**: Initial authentication tokens for immediate API access
+
+<Warning>
+Store the returned access tokens securely. They provide immediate API access and should be handled according to your application's security best practices.
+</Warning>

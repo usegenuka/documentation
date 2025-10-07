@@ -1,0 +1,95 @@
+---
+title: 'Update'
+openapi: 'PUT /2023-11/developer/apps/{app_id}'
+playground: "none"
+version: "1.0"
+---
+
+### Overview  
+This endpoint allows developers to **update an existing application** on Genuka.  
+It can be used to modify general information, configuration details, and integration settings without needing to recreate the app.  
+
+All fields are optional — only the values you provide will be updated, while unspecified fields will remain unchanged.  
+
+---
+
+### Request Body Parameters  
+
+Below are the fields you can include when updating your application:  
+
+- **`name`** *(string, optional)*  
+  The display name of your application. This is what users will see in the Genuka App Store.  
+
+- **`description`** *(string, optional)*  
+  A detailed description of your app. Use this to explain the purpose, features, and value it provides.  
+
+- **`support_email`** *(string, optional)*  
+  The email address where users and the Genuka team can contact you for support or issue resolution.  
+
+- **`redirect_url`** *(string, optional)*  
+  The URL where users are redirected after authorizing your application (commonly used in OAuth flows).  
+
+- **`callback_url`** *(string, optional)*  
+  The backend endpoint that receives authentication callbacks from Genuka.  
+
+- **`webhook_url`** *(string, optional)*  
+  An endpoint in your system where Genuka can send event notifications (e.g., order created, product updated).  
+
+- **`scopes`** *(array of strings, optional)*  
+  Defines the permissions your app requests. Examples:  
+  - `orders.create` → Ability to create orders  
+  - `products.view` → Ability to view product data  
+  - `products.update` → Ability to update products  
+  - `company.*` → Full access to company-level resources  
+
+- **`medias`** *(array, optional)*  
+  Used to upload or update application assets, such as logos or preview images. Example:  
+  ```json
+  [
+    {
+      "src": "https://example.com/logo.png",
+      "collection_name": "logo"
+    }
+  ]
+    ```
+
+- terms_of_service_url (string, optional)
+A link to your Terms of Service document. This helps build trust and ensures legal compliance.
+
+- privacy_policy_url (string, optional)
+A link to your Privacy Policy document, required if you collect or process personal data.
+
+
+```json 
+{
+  "name": "My Awesome App",
+  "description": "An app that helps businesses sync inventory with Genuka.",
+  "support_email": "support@myapp.com",
+  "redirect_url": "https://myapp.com/auth/redirect",
+  "callback_url": "https://myapp.com/auth/callback",
+  "webhook_url": "https://myapp.com/webhooks/genuka",
+  "scopes": [
+    "orders.create",
+    "products.view",
+    "products.update"
+  ],
+  "medias": [
+    {
+      "src": "https://myapp.com/assets/logo.png",
+      "collection_name": "logo"
+    }
+  ],
+  "terms_of_service_url": "https://myapp.com/terms",
+  "privacy_policy_url": "https://myapp.com/privacy"
+}
+```
+
+
+Behavior
+
+- You may update one or multiple fields in a single request.
+- Any field not included will remain unchanged.
+- Sensitive changes (e.g., updating redirect or callback URLs) may trigger a new internal review by the Genuka team.
+- After an update, users interacting with your app will immediately see the latest information on the Genuka App Store.
+
+

@@ -1,0 +1,60 @@
+---
+title: 'Login'
+openapi: 'POST /2023-11/developer/auth/login'
+playground: "none"
+version: "1.0"
+---
+
+## Overview
+
+The Login API enables users to authenticate with the Genuka platform using their registered email and password credentials. This endpoint returns access tokens that can be used to make authenticated requests to other Genuka API endpoints.
+
+<Note>
+This endpoint authenticates existing users and provides the necessary tokens for accessing protected resources. Users must have a verified account before they can successfully log in.
+</Note>
+
+## Use Cases
+
+This API endpoint is typically used for:
+
+- **User Authentication** - Verify user credentials and establish authenticated sessions
+- **Third-party Integrations** - Allow external applications to authenticate Genuka users
+- **API Access** - Obtain tokens required for making authenticated API calls
+- **Session Management** - Initialize user sessions for web applications
+
+## Authentication Flow
+
+When a user successfully logs in, the following process occurs:
+
+1. **Credential Validation** - Email and password are verified against stored user data
+3. **Token Generation** - New access and refresh tokens are created
+4. **Session Initialization** - User session data is prepared
+5. **Response Return** - Authentication tokens and user information are provided
+
+## Security Features
+
+- **Password Hashing** - Passwords are securely hashed using industry-standard algorithms
+- **Rate Limiting** - Login attempts are limited to 5 attempts per IP address per 15 minutes
+- **Token Security** - Access tokens have limited lifespan and are cryptographically signed
+- **Secure Transmission** - All login requests must be made over HTTPS
+
+## Token Information
+
+Upon successful authentication, you'll receive:
+
+- **Access Token** - Short-lived token (1 hour) for API authentication
+- **Refresh Token** - Long-lived token (30 days) for obtaining new access tokens
+- **Token Type** - Always "Bearer" for use in Authorization headers
+- **Expires In** - Token expiration time in seconds
+
+## Error Handling
+
+Common login errors include:
+
+- **Invalid Credentials** - Incorrect email or password
+- **Unverified Email** - Account exists but email verification is pending
+- **Account Suspended** - Account has been temporarily or permanently disabled
+
+<Warning>
+Store authentication tokens securely and never expose them in client-side code. Implement proper token refresh logic to maintain user sessions without requiring frequent re-authentication.
+</Warning>

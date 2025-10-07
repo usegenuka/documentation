@@ -1,0 +1,37 @@
+---
+title: "Submitting your application"
+sidebarTitle: "App submition"
+description: "How submit your app to Genuka for validation and approval."
+---
+
+{" "}
+<Card
+  title="Submit your app"
+  icon="dice"
+  href="/api-reference/endpoint/application/create"
+  arrow="true"
+  cta="Submit your app"
+>
+  For app submition, refer to refernece
+</Card>
+
+## Scopes for application
+
+```json
+{
+  "scopes": [
+    "orders.create",
+    "products.view",
+    "products.update",
+    "company.*"
+  ]
+}
+```
+
+| Name   | Description                              |
+| ------ | ---------------------------------------- |
+| \*     | All privilegies to collection (disclaim) |
+| create | Permission to create collection          |
+| view   | Permission to view collection            |
+| update | Permission to update collection          |
+| delete | Permission to delete collection          |

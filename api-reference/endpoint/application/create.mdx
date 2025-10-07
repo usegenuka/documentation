@@ -1,0 +1,39 @@
+---
+title: 'Create'
+openapi: 'POST /2023-11/developer/apps'
+playground: "none"
+version: "1.0"
+---
+
+This endpoint allows developers to **create a new application** on Genuka.  
+When creating an app, you must provide the following details:  
+
+### Parameters
+
+- **Application Name**  
+  A unique and descriptive name for your application. This name will appear in the developer dashboard and may also be visible to end-users when requesting permissions.  
+
+- **Description**  
+  A short summary of what your application does and how it will use the Genuka API. This helps the Genuka team review your request and helps users understand the purpose of your integration.  
+
+- **Public URL**  
+  The official website of your application. This should be a valid URL where users can learn more about your app. For example, it might be your product’s homepage or landing page.  
+
+- **Support Email**  
+  An active email address that users can contact if they experience issues with your app. This is also used by the Genuka team for communication during the review and approval process.  
+
+- **Redirect URL**  
+  The URL where users are redirected after open app on Genuka.
+
+- **Callback URL**  
+  The endpoint in your application that will handle authentication responses from Genuka. Typically, this is where your app exchanges the authorization code for an access token.  
+
+- **Scopes**  
+  A list of permissions your application is requesting (e.g., access to user profile, email, or other resources). Each scope should be strictly necessary for your integration to function. Requesting unnecessary scopes may cause your app to be rejected during the review.  
+
+- **Webhook Endpoints (optional)**  
+  If your application needs to receive real-time updates from Genuka (e.g., when a product’s is created or a user updates their account), you can provide one or more webhook URLs. These endpoints must be secure and publicly accessible.  
+
+---
+
+Would you like me to also add an **example request/response** (in JSON) for this endpoint so it looks like a full API reference?

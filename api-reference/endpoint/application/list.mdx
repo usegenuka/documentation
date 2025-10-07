@@ -1,0 +1,160 @@
+---
+title: 'All Applications'
+openapi: 'GET /2023-11/developer/apps'
+playground: "none"
+version: "1.0"
+---
+
+### Overview  
+This endpoint allows developers to **retrieve a list of all the applications** they have created in Genuka.  
+
+It is useful for:  
+- Displaying all apps you have registered in your developer dashboard.  
+- Fetching app identifiers (`app_id`) that can be used for update, delete, or detail requests.  
+- Checking the current status of your apps (e.g., draft, pending review, approved, rejected).  
+
+---
+
+### Response  
+The response will return an array of applications, with each object containing details such as:  
+
+- **`id`** – The unique identifier of the application.  
+- **`name`** – The display name of the application.  
+- **`description`** – A summary of what the application does.  
+- **`status`** – The current review/approval state (`draft`, `pending_review`, `approved`, `rejected`, `deleted`).  
+- **`created_at`** – Timestamp when the application was created.  
+- **`updated_at`** – Timestamp of the last modification.  
+
+---
+
+### Example Response  
+
+```json
+{
+    "data": [
+        {
+            "id": "01k56c6y3ag24qqs80r8w60n2g",
+            "name": "Genuka App example",
+            "handle": "genuka-app-example",
+            "description": "example your products, customers and orders in Genuka",
+            "redirect_url": "https://app-example.genuka.com",
+            "callback_url": "https://app-example.genuka.com/api/callback",
+            "webhook_url": null,
+            "client_id": "01994cc3-85f8-7317-ae48-20d2f193eeab",
+            "status": "published",
+            "version": null,
+            "price": 0,
+            "currency_code": "XAF",
+            "currency_name": "F CFA",
+            "configuration": {
+                "scopes": [
+                    "company.*",
+                    "orders.*"
+                ]
+            },
+            "metadata": [],
+            "support_email": "hello@genuka.com",
+            "support_url": null,
+            "privacy_policy_url": "https://genuka.com/privacy-policy",
+            "terms_of_service_url": "https://genuka.com/terms",
+            "company_id": "01jnqttgv3z6m2ppjgcz7cc4az",
+            "deleted_at": null,
+            "created_at": "2025-09-15T09:45:02.000000Z",
+            "updated_at": "2025-09-15T12:16:37.000000Z",
+            "last_activity": null,
+            "submitted_at": null,
+            "published_at": null,
+            "company": {
+                "id": "01jnqttgv3z6m2ppjgcz7cc4az",
+                "name": "Genuka Dev Team"
+            },
+            "client_secret": "•••••••••••••••",
+            "installed": true,
+            "installation": {
+                "id": "01k56nvbgd9vk6q8qaqt4hff53",
+                "app_id": "01k56c6y3ag24qqs80r8w60n2g",
+                "company_id": "01hqydxwtxdj3kmzp3bz7jk73g",
+                "access_token": "",
+                "refresh_token": null,
+                "expires_at": null,
+                "scopes": [
+                    "company.*",
+                    "orders.*"
+                ],
+                "active": true,
+                "installed_at": "2025-09-15T12:33:29.000000Z",
+                "last_access_at": null,
+                "metadata": [],
+                "deleted_at": null,
+                "created_at": "2025-09-15T12:33:29.000000Z",
+                "updated_at": "2025-09-15T12:33:29.000000Z"
+            },
+            "logo": {
+                "id": 64748,
+                "link": "https://cdn.genuka.com/preprod_api_genuka/64748/9390670.png",
+                "collection_name": "logo",
+                "mime_type": "image/png",
+                "file_name": "9390670.png",
+                "size": 35884,
+                "created_at": "2025-09-15T09:45:02.000000Z",
+                "updated_at": "2025-09-15T09:45:06.000000Z",
+                "micro": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-micro.webp",
+                "thumb": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-thumb.webp",
+                "large": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-large.webp",
+                "webp": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-webp.webp"
+            },
+            "medias": [
+                {
+                    "id": 64748,
+                    "link": "https://cdn.genuka.com/preprod_api_genuka/64748/9390670.png",
+                    "collection_name": "logo",
+                    "mime_type": "image/png",
+                    "file_name": "9390670.png",
+                    "size": 35884,
+                    "created_at": "2025-09-15T09:45:02.000000Z",
+                    "updated_at": "2025-09-15T09:45:06.000000Z",
+                    "micro": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-micro.webp",
+                    "thumb": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-thumb.webp",
+                    "large": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-large.webp",
+                    "webp": "https://cdn.genuka.com/preprod_api_genuka/64748/conversions/9390670-webp.webp"
+                }
+            ]
+        }
+    ],
+    "links": {
+        "first": "http://api.genuka.com/2023-11/admin/apps?page=1",
+        "last": "http://api.genuka.com/2023-11/admin/apps?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http://api.genuka.com/2023-11/admin/apps?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "path": "http://api.genuka.com/2023-11/admin/apps",
+        "per_page": 10,
+        "to": 6,
+        "total": 6
+    }
+}
+```

@@ -1,0 +1,14 @@
+---
+title: 'User informations'
+openapi: 'GET /2023-11/developer/me'
+playground: "none"
+version: "1.0"
+---
+
+This endpoint allows you to retrieve the authenticated developer’s account information.
+It returns details such as the user’s profile, email, and account identifiers, which can be used to verify authentication and personalize integrations.
+
+To access this endpoint, you must include a valid authentication token in your request.
+If the token is missing or invalid, the request will fail with an authentication error.
+
+In short, this route enables you to fetch your account details securely using your token.

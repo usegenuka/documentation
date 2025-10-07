@@ -1,0 +1,95 @@
+---
+title: Quickstart guide
+sidebarTitle: "Get Started"
+description: "Start building with Genuka — follow these steps to set up, integrate, and test your first API call."
+---
+
+# Getting Started with Genuka
+
+Follow this step-by-step guide to create your developer account, configure your environment, and make your first API call with Genuka.
+
+---
+
+<Steps>
+   <Step title="Create your developer account">
+    Sign up for a **Genuka developer account** and log in to your dashboard.  
+    👉 [Register here](/api-reference/endpoint/authentication/register)
+
+    Once registered, verify your email address to activate your account.
+
+    ✅ After activation, you now have access to your [Genuka Platform](https://genuka.com) with the credentials you created.
+  </Step>
+
+  <Step title="Retrieve Your API Keys">
+    After approval, navigate to your **Dashboard → API Keys** to get your sandbox and live keys.  
+    - Use **sandbox keys** for testing  
+    - Use **live keys** when going into production
+
+    👉 [API Keys documentation](/dashboard/api-keys)
+  </Step>
+
+  <Step title="Choose your integration method">
+    You can integrate Genuka in **two ways** depending on your project:
+
+    1. **Using the JavaScript SDK (Recommended for React, Angular, Vue, etc.)**
+
+    Install the SDK in your project:
+
+    <CodeGroup>
+
+```bash Using npm
+npm i genuka-api
+```
+
+```bash Using yarn
+yarn add genuka-api
+```
+
+```bash Using pnpm
+pnpm add genuka-api
+```
+
+</CodeGroup>
+
+    Then initialize it in your app:
+
+    ```javascript
+    import Genuka from "genuka-api";
+
+    const genuka = await Genuka.initialize({ adminMode: true });
+    
+    genuka.setCompanyId(YOUR_COMPANY_IS);
+    genuka.setToken(YOUR_ACCES_TOKEN);
+
+    const orders = genuka.orders.list({ isAdmin: true }),
+    console.log({orders})
+    ```
+
+    2. **Using the REST API directly**
+
+    If you don’t want to use the SDK, you can call the REST API with `fetch`, `axios`, or cURL:
+
+    ```bash
+    curl -X GET https://api.genuka.com/orders/ \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+    ```
+
+    👉 Choose the method that best fits your application stack.
+  </Step>
+
+  <Step title="Set up webhooks">
+    To receive **real-time notifications** (e.g., when an order is created or completed), configure your webhook endpoint inside the dashboard. 👉 [Webhook Setup](/webhooks/setup)
+  </Step>
+
+  <Step title="Go live 🚀">
+    When you are ready, making modification of your app and submit in other section
+  </Step>
+</Steps>
+
+---
+
+## Next Steps
+
+- 📘 [Quickstart Guide](/getting-started/quickstart) — deeper integration examples in JS, PHP, Python
+- 📖 [API Reference](/api-reference) — full list of endpoints and parameters
+- 🔔 [Webhooks](/webhooks) — capture order events in real-time

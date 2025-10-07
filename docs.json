@@ -1,0 +1,122 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Genuka Docs",
+  "colors": {
+    "primary": "#FD982E",
+    "light": "#FD982E",
+    "dark": "#FD982E"
+  },
+  "favicon": "/favicon.ico",
+  "navigation": {
+    "global": {
+      "anchors": [{ "anchor": "Website", "href": "https://genuka.com", "icon": "link" }]
+    },
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "index",
+              "getting-started/quickstart",
+              "getting-started/authentication",
+              "getting-started/api-response",
+              "getting-started/create-app",
+              "getting-started/submit-app"
+            ]
+          },
+          {
+            "group": "🔗 Webhooks",
+            "pages": [
+              "getting-started/webhook",
+              "getting-started/webhook-verify"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDK & Librairies",
+        "groups": [
+          {
+            "group": "SDKs Officiels",
+            "pages": []
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "api-reference/api-reference",
+              "api-reference/errors"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "api-reference/endpoint/authentication/register",
+              "api-reference/endpoint/authentication/login",
+              "api-reference/endpoint/authentication/user"
+            ]
+          },
+          {
+            "group": "Applications",
+            "pages": [
+              "api-reference/endpoint/application/create",
+              "api-reference/endpoint/application/update",
+              "api-reference/endpoint/application/list",
+              "api-reference/endpoint/application/review"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/logo.png",
+    "dark": "/logo/logo.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:contact@genuka.com"
+      },
+      {
+        "label": "Blog",
+        "href": "https://notes.genuka.com"
+      }
+    ],
+    "primary": {
+      "href": "https://genuka.com",
+      "label": "Dashboard",
+      "type": "button"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/useGenuka",
+      "facebook": "https://facebook.com/genuka",
+      "linkedin": "https://linkedin.com/company/useGenuka"
+    },
+    "links": [
+      {
+        "header": "Links",
+        "items": [
+          {
+            "href": "https://djopa.notion.site/Careers-55541ea6aceb4b6688fec90c8b6e2fda?pvs=4",
+            "label": "Carrers"
+          },
+          {
+            "href": "https://djopa.notion.site/Become-an-Affiliate-85ab89a2dafb4d3fabb78c3ea7b9d078?pvs=4",
+            "label": "Affiliate"
+          }
+        ]
+      }
+    ]
+  }
+}

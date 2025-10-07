@@ -1,0 +1,86 @@
+---
+title: "Webhook setup"
+sidebarTitle: "Webhook setup"
+description: "How to create and configure webhooks for real-time event notifications from Genuka."
+---
+
+
+Webhooks allow your application to receive **real-time notifications** from Genuka whenever specific events occur (e.g., an order is created, or an order is canceled).  
+Instead of continuously polling the API, Genuka will automatically send an HTTP request to your configured webhook endpoint whenever an event happens.
+
+---
+
+## How Webhooks Work
+
+1. You create and deploy your application with a publicly accessible URL.  
+2. Inside your **Genuka Developer Dashboard**, configure one or multiple webhook endpoints.  
+3. When an event occurs, Genuka sends a `POST` request with a JSON payload to your endpoint.  
+4. Your application processes the event (e.g., updating order status, sending notifications, etc.).  
+
+---
+
+## Example webhook payload
+
+When an order is created, Genuka may send a payload similar to this:
+
+```json
+{
+  "event": "order.created",
+  "data": {
+    "id": "ord_12345",
+    "amount": 15000,
+    "currency": "XAF",
+    "status": "pending",
+    "customer": {
+      "name": "Alice Example",
+      "email": "alice@example.com",
+      "phone": "+237600000000"
+    },
+    "reference": "order_test_001",
+    "created_at": "2025-08-20T12:34:56Z"
+  }
+}
+```
+
+## Securing Your Webhooks
+
+To ensure the payload really comes from Genuka:
+
+Always check the request headers for a signature key (to be provided in the Genuka dashboard).
+
+Validate the event type (event field) before processing.
+
+Ensure your endpoint uses HTTPS for secure communication.
+
+## Example Webhook Handler (Nextjs)
+
+```typescript
+// app/api/webhook/route.ts
+import { NextRequest, NextResponse } from "next/server";
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+
+    switch (body.event) {
+      case "order.created":
+        console.log("✅ New order received:", body.data);
+        break;
+      case "order.completed":
+        console.log("🎉 Order completed:", body.data);
+        break;
+      default:
+        console.log("⚠️ Unhandled event:", body.event);
+    }
+
+    // Always acknowledge reception
+    return NextResponse.json({ received: true }, { status: 200 });
+  } catch (error) {
+    console.error("❌ Error handling webhook:", error);
+    return NextResponse.json(
+      { error: "Invalid payload" },
+      { status: 400 }
+    );
+  }
+}
+```

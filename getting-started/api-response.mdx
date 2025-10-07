@@ -1,0 +1,112 @@
+---
+title: API Response Format
+sidebarTitle: "Response Format"
+description: "Understand the structure of Genuka API responses—including success, error, and pagination formats."
+---
+
+This guide explains the standard response structure used across all Genuka API endpoints, covering success responses, collections, pagination, creation, updates, deletions, and error formats.
+
+
+## Success responses
+### Standard response format for single ressource
+
+All Genuka API responses follow a consistent JSON structure:
+
+```json
+{
+  { /* Response-specific data */ }
+}
+```
+
+### Standard response format for collections
+
+All Genuka API responses follow a consistent JSON structure:
+
+```json
+{
+  "data": [
+    {
+        id: "",
+    }
+    // structure of your data
+  ],
+  "links": {
+    "first":"https://"
+    "last":"https://"
+    "next":"https://"
+    "prev":"https://"
+  },
+  "meta" : {
+    // structure of meta object
+  }
+}
+```
+
+### Pagination Properties
+
+| Property            | Type        | Description                       |
+|---------------------|-------------|-----------------------------------|
+| ```first```               | string      | link for go to the fist page      | 
+| ```last```                | string      | link for go to the last page      | 
+| ```next```                | string      | link for go to the next page      | 
+| ```prex```                | string      | link for go to the previews page  |
+| ```current_page```        | number      | current page number               |  
+| ```from```                | number      | page from               |  
+| ```last_page```           | number      | last page page number               |  
+
+
+## Creation Response
+When creating a new resource, the response typically includes the created resource :
+
+```json
+{
+  "id": "01hqydxwtxdjgkmzp31w7jk73g",
+  "company_id": "01hqydxwtxdj3kmzp3bz7jk2f7g",
+  "deleted_at": null,
+  "updated_at": "2025-08-19T11:14:31.000000Z",
+  "created_at": "2025-08-19T11:14:31.000000Z",
+  // Rest of object
+}
+```
+
+## Updating Response
+When updating resource, the response typically includes the created resource :
+
+```json
+{
+  "id": "01hqydxwtxdjgkmzp31w7jk73g",
+  "company_id": "01hqydxwtxdj3kmzp3bz7jk2f7g",
+  "deleted_at": null,
+  "updated_at": "2025-08-19T11:14:31.000000Z",
+  "created_at": "2025-08-19T11:14:31.000000Z",
+  // Rest of object
+}
+```
+
+
+## Deleting Response
+When deleting resource, the response typically includes the created resource :
+
+```json
+{
+  "id": "01hqydxwtxdjgkmzp31w7jk73g",
+  "company_id": "01hqydxwtxdj3kmzp3bz7jk2f7g",
+  "deleted_at": 2025-08-19T11:14:31.000000Z",
+  "updated_at": "2025-08-19T11:14:31.000000Z",
+  "created_at": "2025-08-19T11:14:31.000000Z",
+  // Rest of object
+}
+```
+
+## Error response
+When an error occurs, the response includes information about what went wrong:
+
+```json
+{
+    "errors": {
+        "email": [
+            "The email has already been taken."
+        ]
+    }
+}
+``

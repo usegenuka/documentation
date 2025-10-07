@@ -1,0 +1,67 @@
+---
+title: Authentication
+sidebarTitle: "Authentication"
+description: "Learn how to authenticate API requests to Genuka securely and handle possible authentication errors."
+---
+
+
+Proper authentication is essential to secure your Genuka integration. This guide explains how to authenticate your API requests, outlines error scenarios, and presents best practices.
+We have several ways to authenticate our requests. We can either use the ```API Key``` or the ```token``` that we must add to the header.
+In the following, we will present both methods.
+
+---
+
+## Using API Key authentication
+
+Genuka uses API keys to authenticate requests. 
+
+### How it works
+
+1. You can find these in your **Genuka Dashboard -> Settings -> API Keys**.
+2. Generate new key and copy it. 
+
+### Example request
+
+```bash 
+curl -X GET "https://preprod-api.genuka.com/2023-11/orders" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "X-Company: YOUR_COMPANY_ID" \
+  -H "X-Shop: YOUR_SHOP_ID"
+```
+
+
+## Authentication with access token
+
+Besides API keys, you can authenticate requests using an **Access Token**.  
+This method is typically used when you authenticate a user via the Genuka platform and receive a token in return.
+
+
+### How it works
+
+1. Obtain an `access_token` after logging in or authenticating a user.  
+2. Include the token in the `Authorization` header for all subsequent requests.  
+
+
+### Example request
+
+```bash
+curl -X GET https://api.genuka.com/orders \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+```
+
+## Common Authentication Errors
+
+If authentication fails, Genuka returns clear error messages:
+
+| Error Scenario            | HTTP Code | Message                                             | Likely Cause                                  |
+|----------------------------|-----------|-----------------------------------------------------|-----------------------------------------------|
+| Missing API Key            | 401       | `"code": 401, "message": "API key is missing"`      | Authorization header not provided             |
+| Invalid or Revoked Key     | 401       | `"code": 401, "message": "Invalid API key"`         | Wrong or expired API key                      |
+| Unauthorized Live Access   | 403       | `"code": 403, "message": "Sandbox key not allowed for live operation"` | Using sandbox key for production request |
+
+
+
+
+
+
