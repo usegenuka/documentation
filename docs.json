@@ -40,23 +40,17 @@
             "pages": []
           },
           {
-            "group": "API Reference - Introduction",
+            "group": "API Reference",
             "pages": [
               "api-reference/api-reference",
-              "api-reference/errors"
-            ]
-          },
-          {
-            "group": "API Reference - Authentication",
-            "pages": [
+              "api-reference/errors",
+              "---",
+              "# Authentication",
               "api-reference/endpoint/authentication/register",
               "api-reference/endpoint/authentication/login",
-              "api-reference/endpoint/authentication/user"
-            ]
-          },
-          {
-            "group": "API Reference - Applications",
-            "pages": [
+              "api-reference/endpoint/authentication/user",
+              "---",
+              "# Applications",
               "api-reference/endpoint/application/create",
               "api-reference/endpoint/application/update",
               "api-reference/endpoint/application/list",
