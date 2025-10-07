@@ -10,53 +10,44 @@
   "favicon": "/favicon.ico",
   "navigation": {
     "global": {
-      "anchors": [{ "anchor": "Website", "href": "https://genuka.com", "icon": "link" }]
+      "anchors": [
+        {
+          "anchor": "Website",
+          "href": "https://genuka.com",
+          "icon": "link"
+        }
+      ]
     },
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Applications Developments",
         "groups": [
           {
-            "group": "Get started",
+            "group": "Guides",
             "pages": [
               "index",
               "getting-started/quickstart",
               "getting-started/authentication",
               "getting-started/api-response",
               "getting-started/create-app",
-              "getting-started/submit-app"
-            ]
-          },
-          {
-            "group": "🔗 Webhooks",
-            "pages": [
+              "getting-started/submit-app",
               "getting-started/webhook",
               "getting-started/webhook-verify"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "SDK & Librairies",
-        "groups": [
+          },
           {
-            "group": "SDKs Officiels",
+            "group": "SDK & Librairies",
             "pages": []
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
+          },
           {
-            "group": "Introduction",
+            "group": "API Reference - Introduction",
             "pages": [
               "api-reference/api-reference",
               "api-reference/errors"
             ]
           },
           {
-            "group": "Authentication",
+            "group": "API Reference - Authentication",
             "pages": [
               "api-reference/endpoint/authentication/register",
               "api-reference/endpoint/authentication/login",
@@ -64,13 +55,22 @@
             ]
           },
           {
-            "group": "Applications",
+            "group": "API Reference - Applications",
             "pages": [
               "api-reference/endpoint/application/create",
               "api-reference/endpoint/application/update",
               "api-reference/endpoint/application/list",
               "api-reference/endpoint/application/review"
             ]
+          }
+        ]
+      },
+      {
+        "tab": "Web Development",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": []
           }
         ]
       }
@@ -109,7 +109,7 @@
         "items": [
           {
             "href": "https://djopa.notion.site/Careers-55541ea6aceb4b6688fec90c8b6e2fda?pvs=4",
-            "label": "Carrers"
+            "label": "Careers"
           },
           {
             "href": "https://djopa.notion.site/Become-an-Affiliate-85ab89a2dafb4d3fabb78c3ea7b9d078?pvs=4",

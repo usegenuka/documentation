@@ -1,9 +1,9 @@
 ---
-title: 'API Reference'
+title: "API Reference"
 description: "Complete Genuka API documentation to integrate the all-in-one business management platform into your applications."
 ---
 
-<Card title="Genuka API Reference" icon="box" vertical>
+<Card title="Genuka API Reference" icon="box">
   Welcome to the complete Genuka API documentation. This REST API allows you to integrate all the features of our business management platform into your applications.
 </Card>
 
@@ -16,12 +16,11 @@ description: "Complete Genuka API documentation to integrate the all-in-one busi
     ```
   </Card>
   <Card title="Authentication" icon="key">
-     ```js
-   Authorization: YOUR_PUBLIC_KEY
+    ```js
+    Authorization: YOUR_PUBLIC_KEY
     ```
   </Card>
 </Columns>
-
 
 ## What you can do with the Genuka API
 
@@ -51,15 +50,15 @@ Before getting started, you need to:
 3. **Configure your environment** for testing or production
 
 <Note>
-Developer access is currently in beta. Contact our team to get access.
+  Developer access is currently in beta. Contact our team to get access.
 </Note>
 
 ## API Environments
 
-| Environment | Base URL | Usage |
-|-------------|----------|-------|
-| **Production** | `https://api.genuka.com` | Production applications |
-| **Sandbox** | `...not sandbox for now, try it localy` | Development and testing |
+| Environment    | Base URL                                | Usage                   |
+| -------------- | --------------------------------------- | ----------------------- |
+| **Production** | `https://api.genuka.com`                | Production applications |
+| **Sandbox**    | `...not sandbox for now, try it localy` | Development and testing |
 
 ## Authentication
 
@@ -92,20 +91,18 @@ All API responses follow a standardized JSON format:
 }
 ```
 
-
 ## HTTP Status Codes
 
-| Code | Meaning | Description |
-|------|---------|-------------|
-| **200** | OK | Successful request |
-| **201** | Created | Resource created successfully |
-| **400** | Bad Request | Invalid parameters |
-| **401** | Unauthorized | Invalid or missing API token |
-| **403** | Forbidden | Access denied |
-| **404** | Not Found | Resource not found |
-| **429** | Too Many Requests | Rate limit exceeded |
-| **500** | Internal Server Error | Server error |
-
+| Code    | Meaning               | Description                   |
+| ------- | --------------------- | ----------------------------- |
+| **200** | OK                    | Successful request            |
+| **201** | Created               | Resource created successfully |
+| **400** | Bad Request           | Invalid parameters            |
+| **401** | Unauthorized          | Invalid or missing API token  |
+| **403** | Forbidden             | Access denied                 |
+| **404** | Not Found             | Resource not found            |
+| **429** | Too Many Requests     | Rate limit exceeded           |
+| **500** | Internal Server Error | Server error                  |
 
 ## Core API Resources
 
