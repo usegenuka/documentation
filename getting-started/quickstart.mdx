@@ -74,7 +74,7 @@ Follow this step-by-step guide to create your developer account, register your f
 
     const genuka = await Genuka.initialize({ adminMode: true });
     
-    genuka.setCompanyId(YOUR_COMPANY_IS);
+    genuka.setCompanyId(YOUR_COMPANY_ID);
     genuka.setToken(YOUR_ACCES_TOKEN);
 
     const orders = genuka.orders.list({ isAdmin: true }),
@@ -91,12 +91,20 @@ Follow this step-by-step guide to create your developer account, register your f
     ```
 
   </Step>
-  <Step title="Set Up Webhooks">
-    Webhooks are **automatically created and triggered** for each relevant request, so your application will receive real-time notifications by default.  
-    However, you can **customize your webhook settings** — for example, choose which events to listen to or where to send them — by following the guide below.  
-    [Customize Webhooks Guide](/getting-started/webhook)
+
+    ⚠️ **Important:**  
+    When your app is installed by a client, Genuka will automatically provide it with a **hmac** specific to that client.  
+    This hmac can be use to optain the *unique access token* who is used to authenticate all API calls made on behalf of that client.  
+
+    👉 For more details about how tokens are generated and managed, see [Authentication](/getting-started/authentication).
+
+    👉 Choose the method that best fits your application stack.
   </Step>
 
+  <Step title="Set Up Webhooks">
+    To receive **real-time notifications** (e.g., when an order is created, updated, or completed), configure your webhook endpoint in the dashboard.\
+    👉 [Webhook Setup Guide](/getting-started/webhook)
+  </Step>
 <Step title="Submit for Review 🧩">
   After testing your app, submit it for review so the Genuka team can verify its compliance and functionality.  
   Our review process ensures that every app meets our **security, performance, and integration standards**.  
@@ -104,10 +112,15 @@ Follow this step-by-step guide to create your developer account, register your f
   👉 [Submit Your App](/getting-started/submit-app)
 </Step>
 
-<Step title="Go Live 🚀">
-  Once your app is approved, the Genuka team will **publish and release** it to the platform.  
-  From your dashboard, you can then switch to **live mode** and start handling real merchant data and transactions.  
-  Welcome to the Genuka ecosystem!
-</Step>
+  <Step title="Go Live 🚀">
+    Once your app is tested and stable, switch to **live mode** from your dashboard:
+
+    1. Deploy your application on your server.
+    2. Open your app in the Genuka dashboard.
+    3. Click the **"Go to Live"** button.
+
+    ✅ Your application will then enter an evaluation phase.\
+    If the evaluation is positive (approved), it becomes immediately available on the **Genuka Store** for clients to install and use.
+  </Step>
 
 </Steps>
