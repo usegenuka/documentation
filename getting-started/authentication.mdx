@@ -10,19 +10,21 @@ We have several ways to authenticate our requests. We can either use the ```API 
 In the following, we will present both methods.
 
 ---
-
 ## Using API Key authentication
 
-Genuka uses API keys to authenticate requests. 
+Genuka uses API keys to authenticate requests.  
+However, **API Key authentication is reserved exclusively for Genuka clients** who wish to connect their stores or perform actions directly from their own company account.  
+
+⚠️ **Developers building external applications** should **not** use this method — their integrations are authenticated **via Access Tokens** instead (see the next section).
 
 ### How it works
 
-1. You can find these in your **Genuka Dashboard -> Settings -> API Keys**.
-2. Generate new key and copy it. 
+1. You can find these in your **Genuka Dashboard → Settings → API Keys**.  
+2. Generate a new key and copy it.
 
 ### Example request
 
-```bash 
+```bash
 curl -X GET "https://preprod-api.genuka.com/2023-11/orders" \
   -H "Content-Type: application/json" \
   -H "X-API-Key: YOUR_API_KEY" \
@@ -30,25 +32,117 @@ curl -X GET "https://preprod-api.genuka.com/2023-11/orders" \
   -H "X-Shop: YOUR_SHOP_ID"
 ```
 
-
-## Authentication with access token
+## Authentication with Access Token
 
 Besides API keys, you can authenticate requests using an **Access Token**.  
-This method is typically used when you authenticate a user via the Genuka platform and receive a token in return.
-
+This method is used for applications installed by a company via the Genuka platform. When a company installs your app, Genuka sends a **callback** with information such as `company_id`, `code`, `timestamp`, `hmac`, and `redirect_to`.
 
 ### How it works
 
-1. Obtain an `access_token` after logging in or authenticating a user.  
-2. Include the token in the `Authorization` header for all subsequent requests.  
+1. When your application is installed by a company, it receives a callback from Genuka containing `company_id`, `code`, `timestamp`, `hmac`, and `redirect_to`.  
+2. Your application should use its `GENUKA_CLIENT_ID`, `GENUKA_CLIENT_SECRET`, `GENUKA_REDIRECT_URI` along with the endpoint `https://api.genuka.com/oauth/token` to **exchange the code for an access token**.  
+3. Store the company as a user in your database.  
+4. **Keep the access token private** to ensure secure API requests on behalf of that company.  
+5. Include the token in the `Authorization` header for all subsequent requests.
 
+### Example: Using the Access Token
 
-### Example request
+<CodeGroup>
+  
+    ```javascript  fetch
+    
+    const params = new URLSearchParams({
+      grant_type: "authorization_code",
+      code: "CODE_FROM_CALLBACK",
+      client_id: process.env.GENUKA_CLIENT_ID,
+      client_secret: process.env.GENUKA_CLIENT_SECRET,
+      redirect_uri: process.env.GENUKA_REDIRECT_URI,
+    });
 
-```bash
-curl -X GET https://api.genuka.com/orders \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6..."
-```
+    const tokenResponse = await fetch("https://api.genuka.com/oauth/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: params,
+    });
+
+    const { access_token } = await tokenResponse.json();
+
+    // Use access_token to get orders
+    const ordersResponse = await fetch("https://api.genuka.com/orders", {
+      headers: { Authorization: `Bearer ${access_token}` },
+    });
+
+    const orders = await ordersResponse.json();
+    console.log(orders);
+    ```
+  
+  
+    ```javascript genuka-api SDK
+    import Genuka from "genuka-api";
+
+    const genuka = await Genuka.initialize({ adminMode: true });
+    genuka.setCompanyId("COMPANY_ID_FROM_CALLBACK");
+    genuka.setToken("ACCESS_TOKEN_FROM_TOKEN_EXCHANGE");
+
+    const orders = await genuka.orders.list({ isAdmin: true });
+    console.log(orders);
+    ```
+  
+
+  
+    ```javascript React
+    import { useEffect } from "react";
+
+    function OrdersComponent() {
+      const access_token = "ACCESS_TOKEN_FROM_TOKEN_EXCHANGE";
+
+      useEffect(() => {
+        async function fetchOrders() {
+          const res = await fetch("https://api.genuka.com/orders", {
+            headers: { Authorization: `Bearer ${access_token}` },
+          });
+          const orders = await res.json();
+          console.log(orders);
+        }
+        fetchOrders();
+      }, []);
+
+      return <div>Check console for orders</div>;
+    }
+    ```
+  
+  
+    ```php php
+      $accessToken = "ACCESS_TOKEN_FROM_TOKEN_EXCHANGE";
+
+      $ch = curl_init("https://api.genuka.com/orders");
+      curl_setopt($ch, CURLOPT_HTTPHEADER, [
+          "Authorization: Bearer $accessToken"
+      ]);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+      $response = curl_exec($ch);
+      curl_close($ch);
+
+      $orders = json_decode($response, true);
+      print_r($orders);
+
+    ```
+
+  
+    ```python python
+    import requests
+
+    access_token = "ACCESS_TOKEN_FROM_TOKEN_EXCHANGE"
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    response = requests.get("https://api.genuka.com/orders", headers=headers)
+    orders = response.json()
+    print(orders)
+    ```
+
+</CodeGroup> 
+
 
 ## Common Authentication Errors
 
