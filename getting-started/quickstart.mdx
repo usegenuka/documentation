@@ -4,14 +4,9 @@ sidebarTitle: "Get Started"
 description: "Start building with Genuka — follow these steps to set up, integrate, and test your first API call."
 ---
 
-<img
-  src="/images/dev-genuka.png"
-  alt="Process to meet merchands need."
-  height="200"
-/>
 # Getting Started with Genuka
 
-Follow this step-by-step guide to create your developer account, register your first application.
+Follow this step-by-step guide to create your developer account, register your first application, and make your first API call with Genuka.
 
 ---
 
@@ -20,8 +15,7 @@ Follow this step-by-step guide to create your developer account, register your f
     Create your **Genuka developer account** and log in to your dashboard.\
     👉 [Register here](https://dev.genuka.com/login)
 
-    Once logged in, you can access your developer dashboard to manage your applications and test integrations.
-
+    ✅ Once logged in, you can access your developer dashboard to manage your applications and test integrations.
   </Step>
   <Step title="Create Your Application">
     From your developer dashboard, go to the **Applications** section or visit 👉 [Create an App](https://dev.genuka.com/).
@@ -32,7 +26,6 @@ Follow this step-by-step guide to create your developer account, register your f
     - **Secret Key** — used for secure server-side authentication
 
     Keep your **Secret Key** private — it authenticates your server with Genuka’s API.
-
   </Step>
   <Step title="Choose Your Integration Method">
     You can integrate Genuka in **two ways**, depending on your stack:
@@ -47,12 +40,12 @@ Follow this step-by-step guide to create your developer account, register your f
     npm install genuka-api
     ```
 
-
+    
     ```bash Using yarn
     yarn add genuka-api
     ```
 
-
+    
     ```bash Using pnpm
     pnpm add genuka-api
     ```
@@ -61,21 +54,17 @@ Follow this step-by-step guide to create your developer account, register your f
 
     Initialize the SDK in your app:
 
-<Note>
-  💡 `companyId` represents the ID of the company whose data you want to access.
-  No worries — this ID is **automatically included with every request**, so
-  there’s nothing extra you need to do. And here’s some good news — **your
-  developer account automatically creates a default company**, making it easy to
-  start testing your API calls right away.
-</Note>
-
     ```javascript
     import Genuka from "genuka-api";
-
-    const genuka = await Genuka.initialize({ id: companyId });
-
-    const products = await genuka.products.list();
-    console.log({ products });
+    
+    const genuka = await Genuka.initialize({
+      publicKey: "YOUR_PUBLIC_KEY",
+      secretKey: "YOUR_SECRET_KEY",
+      adminMode: true,
+    });
+    
+    const orders = await genuka.orders.list({ isAdmin: true });
+    console.log({ orders });
     ```
 
     2. **Using the REST API directly**
@@ -83,28 +72,42 @@ Follow this step-by-step guide to create your developer account, register your f
     You can also interact directly with the API using `fetch`, `axios`, or cURL:
 
     ```bash
-    curl -X GET https://api.genuka.com/2023-11/products/ \
-    -H "x-company: companyId"
+    curl -X GET https://api.genuka.com/orders/ \
+    -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
     ```
 
+    ⚠️ **Important:**\
+    When your app is installed by a client, Genuka will automatically provide it with a **unique access token** specific to that client.\
+    This token must be used to authenticate all API calls made on behalf of that client.
+
+    👉 For more details about how tokens are generated and managed, see [Authentication](/getting-started/authentication).
+
+    👉 Choose the method that best fits your application stack.
   </Step>
   <Step title="Set Up Webhooks">
-    Webhooks are **automatically created and triggered** for each relevant request, so your application will receive real-time notifications by default.  
-    However, you can **customize your webhook settings** — for example, choose which events to listen to or where to send them — by following the guide below.  
-    [Customize Webhooks Guide](/getting-started/webhook)
+    To receive **real-time notifications** (e.g., when an order is created, updated, or completed), configure your webhook endpoint in the dashboard.\
+    👉 [Webhook Setup Guide](/getting-started/webhook)
   </Step>
-
-<Step title="Submit for Review 🧩">
-  After testing your app, submit it for review so the Genuka team can verify its compliance and functionality.  
-  Our review process ensures that every app meets our **security, performance, and integration standards**.  
-  If any issues are found, you'll receive a detailed notification explaining what needs to be fixed before approval.  
-  👉 [Submit Your App](/getting-started/submit-app)
-</Step>
-
 <Step title="Go Live 🚀">
-  Once your app is approved, the Genuka team will **publish and release** it to the platform.  
-  From your dashboard, you can then switch to **live mode** and start handling real merchant data and transactions.  
-  Welcome to the Genuka ecosystem!
+  Once your app is tested and stable, switch to **live mode** from your dashboard:
+
+  1. Deploy your application on your server.
+  2. Open your app in the Genuka dashboard.
+  3. Click the **"Go to Live"** button.
+
+  ✅ Your application will then enter an evaluation phase.  
+  If the evaluation is positive (approved), it becomes immediately available on the **Genuka Store** for clients to install and use.
+  
+  <!-- 👉 [Submit Your App](/getting-started/submit-app) -->
 </Step>
 
 </Steps>
+
+---
+
+## Next Steps
+
+- 📘 [Create an Application](/getting-started/create-app) — detailed app creation guide
+- 🔐 [Authentication](/getting-started/authentication) — learn how to securely use your keys and tokens
+- 📖 [API Reference](/api-reference) — explore all available endpoints
+- 🔔 [Webhooks](/getting-started/webhook) — capture and verify order events in real time
