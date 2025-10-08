@@ -61,7 +61,13 @@
               "api-reference/orders/create",
               "api-reference/orders/read",
               "api-reference/orders/update",
-              "api-reference/orders/delete"
+              "api-reference/orders/delete",
+              "---",
+              "# Paiements",
+              "api-reference/paiements/create",
+              "api-reference/paiements/read",
+              "api-reference/paiements/update",
+              "api-reference/paiements/delete"
             ]
           }
         ]
