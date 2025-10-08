@@ -111,35 +111,6 @@ This method is used for applications installed by a company via the Genuka platf
     }
     ```
   
-  
-    ```php php
-      $accessToken = "ACCESS_TOKEN_FROM_TOKEN_EXCHANGE";
-
-      $ch = curl_init("https://api.genuka.com/orders");
-      curl_setopt($ch, CURLOPT_HTTPHEADER, [
-          "Authorization: Bearer $accessToken"
-      ]);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-      $response = curl_exec($ch);
-      curl_close($ch);
-
-      $orders = json_decode($response, true);
-      print_r($orders);
-
-    ```
-
-  
-    ```python python
-    import requests
-
-    access_token = "ACCESS_TOKEN_FROM_TOKEN_EXCHANGE"
-    headers = {"Authorization": f"Bearer {access_token}"}
-
-    response = requests.get("https://api.genuka.com/orders", headers=headers)
-    orders = response.json()
-    print(orders)
-    ```
 
 </CodeGroup> 
 
