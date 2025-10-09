@@ -29,15 +29,9 @@
               "getting-started/quickstart",
               "getting-started/authentication",
               "getting-started/api-response",
-              "getting-started/create-app",
-              "getting-started/submit-app",
               "getting-started/webhook",
               "getting-started/webhook-verify"
             ]
-          },
-          {
-            "group": "SDK & Librairies",
-            "pages": []
           },
           {
             "group": "API Reference",
@@ -45,11 +39,35 @@
               "api-reference/api-reference",
               "api-reference/errors",
               "---",
-              "# Authentication",
-             
+              "# Companies",
+              "api-reference/companies/create",
+              "api-reference/companies/read",
+              "api-reference/companies/update",
+              "api-reference/companies/delete",
               "---",
-              "# Applications"
-       
+              "# Products",
+              "api-reference/products/create",
+              "api-reference/products/read",
+              "api-reference/products/update",
+              "api-reference/products/delete",
+              "---",
+              "# customers",
+              "api-reference/customers/create",
+              "api-reference/customers/read",
+              "api-reference/customers/update",
+              "api-reference/customers/delete",
+              "---",
+              "# Orders",
+              "api-reference/orders/create",
+              "api-reference/orders/read",
+              "api-reference/orders/update",
+              "api-reference/orders/delete",
+              "---",
+              "# Paiements",
+              "api-reference/paiements/create",
+              "api-reference/paiements/read",
+              "api-reference/paiements/update",
+              "api-reference/paiements/delete"
             ]
           }
         ]
