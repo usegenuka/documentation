@@ -39,44 +39,70 @@
               "api-reference/api-reference",
               "api-reference/errors",
               "---",
-              "# Companies",
-              "api-reference/companies/create",
-              "api-reference/companies/read",
-              "api-reference/companies/update",
-              "api-reference/companies/delete",
-              "---",
-              "# Products",
-              "api-reference/endpoint/products/create",
-              "api-reference/endpoint/products/read",
-              "api-reference/endpoint/products/list",
-              "api-reference/endpoint/products/update",
-              "api-reference/endpoint/products/delete",
-              "---",
-              "# customers",
-              "api-reference/endpoint/customers/create",
-              "api-reference/endpoint/customers/read",
-              "api-reference/endpoint/customers/update",
-              "api-reference/endpoint/customers/delete",
-              "---",
-              "# Orders",
-              "api-reference/endpoint/orders/list",
-              "api-reference/endpoint/orders/create",
-              "api-reference/endpoint/orders/read",
-              "api-reference/endpoint/orders/update",
-              "api-reference/endpoint/orders/activities",
-              "api-reference/endpoint/orders/add-payment",
-              "api-reference/endpoint/orders/get-payments",
-              "api-reference/endpoint/orders/status",
-              "---",
-              "# Paiement Methods",
-              "api-reference/endpoint/paiement-methods/list",
-              "api-reference/endpoint/paiement-methods/read",
-              "# Paiements",
-              "api-reference/endpoint/paiements/list",
-              "api-reference/endpoint/paiements/create",
-              "api-reference/endpoint/paiements/read",
-              "api-reference/endpoint/paiements/update",
-              "api-reference/endpoint/paiements/delete"
+              {
+                "group": "Companies",
+                "icon": "puzzle",
+                "pages": [
+                  "api-reference/companies/create",
+                  "api-reference/companies/read",
+                  "api-reference/companies/update",
+                  "api-reference/companies/delete"
+                ]
+              },
+              {
+                "group": "Products",
+                "icon": "dice",
+                "pages": [
+                  "api-reference/endpoint/products/create",
+                  "api-reference/endpoint/products/read",
+                  "api-reference/endpoint/products/list",
+                  "api-reference/endpoint/products/update",
+                  "api-reference/endpoint/products/delete"
+                ]
+              },
+              {
+                "group": "Customers",
+                "icon": "users",
+                "pages": [
+                  "api-reference/endpoint/customers/create",
+                  "api-reference/endpoint/customers/read",
+                  "api-reference/endpoint/customers/update",
+                  "api-reference/endpoint/customers/delete"
+                ]
+              },
+              {
+                "group": "Orders",
+                "icon": "store",
+                "pages": [
+                  "api-reference/endpoint/orders/list",
+                  "api-reference/endpoint/orders/create",
+                  "api-reference/endpoint/orders/read",
+                  "api-reference/endpoint/orders/update",
+                  "api-reference/endpoint/orders/activities",
+                  "api-reference/endpoint/orders/add-payment",
+                  "api-reference/endpoint/orders/get-payments",
+                  "api-reference/endpoint/orders/status"
+                ]
+              },
+              {
+                "group": "Paiement Methods",
+                "icon": "landmark",
+                "pages": [
+                  "api-reference/endpoint/paiement-methods/list",
+                  "api-reference/endpoint/paiement-methods/read"
+                ]
+              },
+              {
+                "group": "Paiements",
+                "icon": "coins",
+                "pages": [
+                  "api-reference/endpoint/paiements/list",
+                  "api-reference/endpoint/paiements/create",
+                  "api-reference/endpoint/paiements/read",
+                  "api-reference/endpoint/paiements/update",
+                  "api-reference/endpoint/paiements/delete"
+                ]
+              }
             ]
           }
         ]
