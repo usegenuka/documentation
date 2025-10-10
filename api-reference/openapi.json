@@ -6155,7 +6155,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "200 OK",
+                        "description": "200",
                         "headers": {
                             "Cache-Control": {
                                 "schema": {
