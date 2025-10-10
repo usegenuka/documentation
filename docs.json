@@ -68,10 +68,11 @@
               "api-reference/endpoint/paiement-methods/list",
               "api-reference/endpoint/paiement-methods/read",
               "# Paiements",
-              "api-reference/paiements/create",
-              "api-reference/paiements/read",
-              "api-reference/paiements/update",
-              "api-reference/paiements/delete"
+              "api-reference/endpoint/paiements/list",
+              "api-reference/endpoint/paiements/create",
+              "api-reference/endpoint/paiements/read",
+              "api-reference/endpoint/paiements/update",
+              "api-reference/endpoint/paiements/delete"
             ]
           }
         ]
