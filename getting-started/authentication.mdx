@@ -59,7 +59,7 @@ This method is used for applications installed by a company via the Genuka platf
       redirect_uri: process.env.GENUKA_REDIRECT_URI,
     });
 
-    const tokenResponse = await fetch("https://api.genuka.com/oauth/token", {
+    const tokenResponse = await fetch("https://api.genuka.com/oauth/2023-11/token", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: params,
