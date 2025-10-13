@@ -153,6 +153,17 @@
                 ]
               },
               {
+                "group": "Treasury accounts",
+                "icon": "landmark",
+                "pages": [
+                  "api-reference/endpoint/treasury-account/create",
+                  "api-reference/endpoint/treasury-account/list",
+                  "api-reference/endpoint/treasury-account/read",
+                  "api-reference/endpoint/treasury-account/update",
+                  "api-reference/endpoint/treasury-account/delete"
+                ]
+              },
+              {
                 "group": "Paiement Methods",
                 "icon": "landmark",
                 "pages": [
