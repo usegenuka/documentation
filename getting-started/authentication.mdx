@@ -9,6 +9,14 @@ Proper authentication is essential to secure your Genuka integration. This guide
 We have several ways to authenticate our requests. We can either use the ```API Key``` or the ```token``` that we must add to the header.
 In the following, we will present both methods.
 
+> ⚠️ **Important — Verify the HMAC before any authentication**
+>
+> Before performing any authentication or token exchange, your application **must verify the HMAC signature** sent by Genuka in the installation callback.
+>
+> This step ensures the request **truly comes from Genuka** and prevents malicious third-party access.
+>
+> 👉 [Learn how to verify the HMAC →](/hmac-verification)
+
 ---
 ## Using API Key authentication
 
@@ -59,7 +67,7 @@ This method is used for applications installed by a company via the Genuka platf
       redirect_uri: process.env.GENUKA_REDIRECT_URI,
     });
 
-    const tokenResponse = await fetch("https://api.genuka.com/oauth/token", {
+    const tokenResponse = await fetch("https://api.genuka.com/oauth/2023-11/token", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: params,
@@ -113,6 +121,7 @@ This method is used for applications installed by a company via the Genuka platf
   
 
 </CodeGroup> 
+
 
 
 ## Common Authentication Errors
