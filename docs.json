@@ -170,6 +170,15 @@
                   "api-reference/endpoint/paiements/update",
                   "api-reference/endpoint/paiements/delete"
                 ]
+              },
+              {
+                "group": "Webhooks",
+                "icon": "database",
+                "pages": [
+                  "api-reference/endpoint/webhook/create",
+                  "api-reference/endpoint/webhook/list",
+                  "api-reference/endpoint/webhook/read"
+                ]
               }
             ]
           }
