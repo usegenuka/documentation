@@ -28,6 +28,7 @@
               "index",
               "getting-started/quickstart",
               "getting-started/authentication",
+              "getting-started/hmac-verification",
               "getting-started/api-response",
               "getting-started/webhook",
               "getting-started/webhook-verify"
