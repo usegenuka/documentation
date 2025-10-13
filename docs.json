@@ -180,6 +180,14 @@
                 ]
               },
               {
+                "group": "Bills",
+                "icon": "coins",
+                "pages": [
+                  "api-reference/endpoint/bills/create",
+                  "api-reference/endpoint/bills/list"
+                ]
+              },
+              {
                 "group": "Webhooks",
                 "icon": "database",
                 "pages": [
