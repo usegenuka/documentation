@@ -64,6 +64,14 @@
                     ]
                   },
                   {
+                    "group": "Availabilities",
+                    "icon": "bell",
+                    "pages": [
+                      "api-reference/endpoint/companies/availbility/create",
+                      "api-reference/endpoint/companies/availbility/list"
+                    ]
+                  },
+                  {
                     "group": "Warehouse",
                     "icon": "warehouse",
                     "pages": [
