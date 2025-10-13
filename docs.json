@@ -88,16 +88,17 @@
                 "group": "Products",
                 "icon": "dice",
                 "pages": [
+                  "api-reference/endpoint/products/create",
+                  "api-reference/endpoint/products/read",
+                  "api-reference/endpoint/products/list",
+                  "api-reference/endpoint/products/update",
+                  "api-reference/endpoint/products/delete",
                   {
                     "group": "Variants",
-                    "icon": "users",
-                    "pages": [
-                      "api-reference/endpoint/products/variants/list"
-                    ]
+                    "pages": ["api-reference/endpoint/products/variants/list"]
                   },
                   {
                     "group": "Suppliers",
-                    "icon": "users",
                     "pages": [
                       "api-reference/endpoint/products/suppliers/create",
                       "api-reference/endpoint/products/suppliers/update",
@@ -105,11 +106,26 @@
                       "api-reference/endpoint/products/suppliers/list"
                     ]
                   },
-                  "api-reference/endpoint/products/create",
-                  "api-reference/endpoint/products/read",
-                  "api-reference/endpoint/products/list",
-                  "api-reference/endpoint/products/update",
-                  "api-reference/endpoint/products/delete"
+                  {
+                    "group": "Stocks",
+                    "pages": [
+                      "api-reference/endpoint/products/stocks/create",
+                      "api-reference/endpoint/products/stocks/read",
+                      "api-reference/endpoint/products/stocks/list",
+                      "api-reference/endpoint/products/stocks/update",
+                      "api-reference/endpoint/products/stocks/delete"
+                    ]
+                  },
+                  {
+                    "group": "Collections",
+                    "pages": [
+                      "api-reference/endpoint/products/collections/create",
+                      "api-reference/endpoint/products/collections/read",
+                      "api-reference/endpoint/products/collections/list",
+                      "api-reference/endpoint/products/collections/update",
+                      "api-reference/endpoint/products/collections/delete"
+                    ]
+                  }
                 ]
               },
               {
