@@ -143,13 +143,13 @@
                 "icon": "store",
                 "pages": [
                   "api-reference/endpoint/orders/list",
-                  "api-reference/endpoint/orders/create",
                   "api-reference/endpoint/orders/read",
-                  "api-reference/endpoint/orders/update",
                   "api-reference/endpoint/orders/activities",
-                  "api-reference/endpoint/orders/add-payment",
                   "api-reference/endpoint/orders/get-payments",
-                  "api-reference/endpoint/orders/status"
+                  "api-reference/endpoint/orders/update",
+                  "api-reference/endpoint/orders/status",
+                  "api-reference/endpoint/orders/create",
+                  "api-reference/endpoint/orders/add-payment"
                 ]
               },
               {
@@ -164,11 +164,8 @@
                 "group": "Paiements",
                 "icon": "coins",
                 "pages": [
-                  "api-reference/endpoint/paiements/list",
                   "api-reference/endpoint/paiements/create",
-                  "api-reference/endpoint/paiements/read",
-                  "api-reference/endpoint/paiements/update",
-                  "api-reference/endpoint/paiements/delete"
+                  "api-reference/endpoint/paiements/list"
                 ]
               },
               {
