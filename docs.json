@@ -60,9 +60,7 @@
                     "pages": [
                       "api-reference/endpoint/companies/users/create",
                       "api-reference/endpoint/companies/users/list",
-                      "api-reference/endpoint/companies/users/read",
-                      "api-reference/endpoint/companies/users/update",
-                      "api-reference/endpoint/companies/users/delete"
+                      "api-reference/endpoint/companies/users/update"
                     ]
                   },
                   {
