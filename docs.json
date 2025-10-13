@@ -54,10 +54,28 @@
                       "api-reference/endpoint/companies/shops/delete"
                     ]
                   },
-                  "api-reference/companies/create",
-                  "api-reference/companies/read",
-                  "api-reference/companies/update",
-                  "api-reference/companies/delete"
+                  {
+                    "group": "Users",
+                    "icon": "users",
+                    "pages": [
+                      "api-reference/endpoint/companies/users/create",
+                      "api-reference/endpoint/companies/users/list",
+                      "api-reference/endpoint/companies/users/read",
+                      "api-reference/endpoint/companies/users/update",
+                      "api-reference/endpoint/companies/users/delete"
+                    ]
+                  },
+                  {
+                    "group": "Warehouse",
+                    "icon": "warehouse",
+                    "pages": [
+                      "api-reference/endpoint/companies/warehouse/create",
+                      "api-reference/endpoint/companies/warehouse/list",
+                      "api-reference/endpoint/companies/warehouse/read",
+                      "api-reference/endpoint/companies/warehouse/update",
+                      "api-reference/endpoint/companies/warehouse/delete"
+                    ]
+                  }
                 ]
               },
               {
