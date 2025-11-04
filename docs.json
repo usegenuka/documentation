@@ -45,7 +45,7 @@
                 "pages": [
                   {
                     "group": "Shops",
-                    "icon": "tickets",
+                    "icon": "store",
                     "pages": [
                       "api-reference/endpoint/companies/shops/create",
                       "api-reference/endpoint/companies/shops/list",
@@ -86,7 +86,7 @@
               },
               {
                 "group": "Products",
-                "icon": "dice",
+                "icon": "package",
                 "pages": [
                   "api-reference/endpoint/products/create",
                   "api-reference/endpoint/products/read",
