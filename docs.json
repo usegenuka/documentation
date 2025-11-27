@@ -35,6 +35,12 @@
             ]
           },
           {
+            "group": "Boilerplates",
+            "pages": [
+              "boilerplates/overview"
+            ]
+          },
+          {
             "group": "API Reference",
             "pages": [
               "api-reference/api-reference",
