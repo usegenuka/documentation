@@ -1,4 +1,15 @@
 ---
 title: 'List all products'
 openapi: 'GET /2023-11/admin/products'
+display: "interactive"
+description: "Retrieve a paginated list of all products in the authenticated store.  
+Use this endpoint to fetch existing products, filter them, or synchronize them with external services."
 ---
+
+## TypeScript SDK Example
+
+```ts
+import Genuka from "genuka-api";
+const genuka = Genuka.initialize({ id: companyId });
+await genuka.products.list({ page: 1, limit: 20 });
+```
