@@ -4,21 +4,19 @@ description: "Complete Genuka API documentation to integrate the all-in-one busi
 ---
 
 <Card title="Genuka API Reference" icon="box">
-  Welcome to the complete Genuka API documentation. This REST API allows you to integrate all the features of our business management platform into your applications.
+  Welcome to the complete Genuka API documentation. This REST API allows you to
+  integrate all the features of our business management platform into your
+  applications.
 </Card>
 
 ## Getting started
 
 <Columns cols={2}>
   <Card title="Base URLs" icon="globe">
-    ```js
-    https://api.genuka.com
-    ```
+    ```js https://api.genuka.com ```
   </Card>
   <Card title="Authentication" icon="key">
-    ```js
-    Authorization: YOUR_PUBLIC_KEY
-    ```
+    ```js Authorization: YOUR_PUBLIC_KEY ```
   </Card>
 </Columns>
 
@@ -55,10 +53,10 @@ Before getting started, you need to:
 
 ## API Environments
 
-| Environment    | Base URL                                | Usage                   |
-| -------------- | --------------------------------------- | ----------------------- |
-| **Production** | `https://api.genuka.com`                | Production applications |
-| **Sandbox**    | `...not sandbox for now, try it localy` | Development and testing |
+| Environment    | Base URL                     | Usage                   |
+| -------------- | ---------------------------- | ----------------------- |
+| **Production** | `https://api.genuka.com`     | Production applications |
+| **Sandbox**    | `https://staging.genuka.com` | Development and testing |
 
 ## Authentication
 
@@ -83,11 +81,10 @@ All API responses follow a standardized JSON format:
 
 ```json
 {
-  
   "id": "fkk3kk45jdjdj", // uuid
   "name": "Example Product",
   "price": 25000,
-  "currency": "XAF",
+  "currency": "XAF"
 }
 ```
 
@@ -116,7 +113,11 @@ All API responses follow a standardized JSON format:
   <Card title="Customers" icon="user" href="/api-reference/endpoint/customers">
     CRM management and customer profiles
   </Card>
-  <Card title="Invoices" icon="file-invoice" href="/api-reference/endpoint/invoices">
+  <Card
+    title="Invoices"
+    icon="file-invoice"
+    href="/api-reference/endpoint/invoices"
+  >
     Invoice generation and management
   </Card>
 </CardGroup>
@@ -134,9 +135,7 @@ New versions are backwards compatible for at least 12 months.
 
 <CardGroup cols={1}>
   <Card title="JavaScript/Node.js" icon="node-js">
-    ```bash
-    npm install genuka-api
-    ```
+    ```bash npm install genuka-api ```
   </Card>
 </CardGroup>
 
