@@ -13,10 +13,14 @@ description: "Complete Genuka API documentation to integrate the all-in-one busi
 
 <Columns cols={2}>
   <Card title="Base URLs" icon="globe">
-    ```js https://api.genuka.com ```
+    ```js
+    https://api.genuka.com || https://staging.genuka.com
+    ```
   </Card>
   <Card title="Authentication" icon="key">
-    ```js Authorization: YOUR_PUBLIC_KEY ```
+    ```js 
+    Authorization: YOUR_PUBLIC_KEY
+     ```
   </Card>
 </Columns>
 
@@ -39,17 +43,6 @@ The Genuka API enables you to create powerful integrations to manage all aspects
   </Card>
 </CardGroup>
 
-## Prerequisites
-
-Before getting started, you need to:
-
-1. **Create a developer account** on [Genuka](https://genuka.com)
-2. **Obtain your API keys** from your developer dashboard
-3. **Configure your environment** for testing or production
-
-<Note>
-  Developer access is currently in beta. Contact our team to get access.
-</Note>
 
 ## API Environments
 
@@ -126,8 +119,8 @@ All API responses follow a standardized JSON format:
 
 The Genuka API uses URL-based versioning:
 
-- Current version: `v2`
-- Full URL: `https://api.genuka.com/v2/`
+- Current version: `2023-11`
+- Full URL: `https://api.genuka.com/2023-11/`
 
 New versions are backwards compatible for at least 12 months.
 
@@ -135,7 +128,9 @@ New versions are backwards compatible for at least 12 months.
 
 <CardGroup cols={1}>
   <Card title="JavaScript/Node.js" icon="node-js">
-    ```bash npm install genuka-api ```
+    ```bash 
+    npm install genuka-api 
+    ```
   </Card>
 </CardGroup>
 
@@ -143,7 +138,7 @@ New versions are backwards compatible for at least 12 months.
 
 Genuka can send webhook notifications for important events:
 
-- New orders
+- Orders
 - Status changes
 - Stock updates
 - Payments received and other.

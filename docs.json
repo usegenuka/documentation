@@ -12,8 +12,8 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Website",
-          "href": "https://genuka.com",
+          "anchor": "Developer platform",
+          "href": "https://platform.genuka.com",
           "icon": "link"
         }
       ]
@@ -36,9 +36,7 @@
           },
           {
             "group": "Boilerplates",
-            "pages": [
-              "boilerplates/overview"
-            ]
+            "pages": ["boilerplates/overview"]
           },
           {
             "group": "API Reference",
@@ -234,7 +232,7 @@
     ],
     "primary": {
       "href": "https://genuka.com",
-      "label": "Dashboard",
+      "label": "Genuka dashboard",
       "type": "button"
     }
   },
