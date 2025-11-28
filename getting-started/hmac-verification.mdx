@@ -26,12 +26,16 @@ If they **don’t match**, you **must reject the request** — otherwise, your a
 
 ---
 
-## Example: Validating HMAC in Node.js
+## Example: Validating HMAC
 
-Below is a robust example to validate HMAC in a Node.js / Next.js environment. It recreates the signed string exactly, computes the HMAC using your client secret and compares both values using a constant-time comparison.
+Below are robust examples to validate HMAC in different programming languages. Each example recreates the signed string exactly, computes the HMAC using your client secret and compares both values using a constant-time comparison.
 
-```javascript
+<CodeGroup>
+
+```javascript Node.js
 import crypto from "crypto";
+
+const MAX_AGE_SECONDS = 300; // 5 minutes
 
 export function validateHmac({
   hmac: receivedHmac,
@@ -40,62 +44,213 @@ export function validateHmac({
 }) {
   if (!receivedHmac || !timestamp || !companyId) return false;
 
-  // 1. Recreate the exact string used to generate the HMAC on Genuka's side
+  // 1. Check timestamp to prevent replay attacks
+  const now = Math.floor(Date.now() / 1000);
+  if (Math.abs(now - parseInt(timestamp)) > MAX_AGE_SECONDS) {
+    return false;
+  }
+
+  // 2. Recreate the exact string used to generate the HMAC on Genuka's side
   const stringToHash = `company_id=${companyId}&timestamp=${timestamp}`;
 
-  // 2. Compute the HMAC using your GENUKA_CLIENT_SECRET
+  // 3. Compute the HMAC using your GENUKA_CLIENT_SECRET
   const secret = process.env.GENUKA_CLIENT_SECRET || "";
   const computedHmac = crypto
     .createHmac("sha256", secret)
     .update(stringToHash)
     .digest("hex");
 
-  // 3. Compare in constant time to avoid timing attacks
+  // 4. Compare in constant time to avoid timing attacks
   try {
     return crypto.timingSafeEqual(
       Buffer.from(computedHmac, "hex"),
       Buffer.from(receivedHmac, "hex")
     );
   } catch (err) {
-    // In case of length mismatch or other errors, return false
     return false;
   }
 }
 ```
 
+```php PHP
+<?php
+
+define('MAX_AGE_SECONDS', 300); // 5 minutes
+
+function validateHmac(
+    string $receivedHmac,
+    string $timestamp,
+    string $companyId
+): bool {
+    if (empty($receivedHmac) || empty($timestamp) || empty($companyId)) {
+        return false;
+    }
+
+    // 1. Check timestamp to prevent replay attacks
+    $now = time();
+    if (abs($now - intval($timestamp)) > MAX_AGE_SECONDS) {
+        return false;
+    }
+
+    // 2. Recreate the exact string used to generate the HMAC on Genuka's side
+    $stringToHash = "company_id={$companyId}&timestamp={$timestamp}";
+
+    // 3. Compute the HMAC using your GENUKA_CLIENT_SECRET
+    $secret = $_ENV['GENUKA_CLIENT_SECRET'] ?? '';
+    $computedHmac = hash_hmac('sha256', $stringToHash, $secret);
+
+    // 4. Compare in constant time to avoid timing attacks
+    return hash_equals($computedHmac, $receivedHmac);
+}
+
+// Usage example in Laravel or plain PHP
+$isValid = validateHmac(
+    $_GET['hmac'] ?? '',
+    $_GET['timestamp'] ?? '',
+    $_GET['company_id'] ?? ''
+);
+
+if (!$isValid) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Invalid HMAC. Request not from Genuka.']);
+    exit;
+}
+```
+
+```python Python
+import hmac
+import hashlib
+import os
+import time
+
+MAX_AGE_SECONDS = 300  # 5 minutes
+
+def validate_hmac(received_hmac: str, timestamp: str, company_id: str) -> bool:
+    if not received_hmac or not timestamp or not company_id:
+        return False
+
+    # 1. Check timestamp to prevent replay attacks
+    now = int(time.time())
+    if abs(now - int(timestamp)) > MAX_AGE_SECONDS:
+        return False
+
+    # 2. Recreate the exact string used to generate the HMAC on Genuka's side
+    string_to_hash = f"company_id={company_id}&timestamp={timestamp}"
+
+    # 3. Compute the HMAC using your GENUKA_CLIENT_SECRET
+    secret = os.environ.get('GENUKA_CLIENT_SECRET', '')
+    computed_hmac = hmac.new(
+        secret.encode('utf-8'),
+        string_to_hash.encode('utf-8'),
+        hashlib.sha256
+    ).hexdigest()
+
+    # 4. Compare in constant time to avoid timing attacks
+    return hmac.compare_digest(computed_hmac, received_hmac)
+
+
+# Usage example with Flask
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/callback')
+def callback():
+    is_valid = validate_hmac(
+        request.args.get('hmac', ''),
+        request.args.get('timestamp', ''),
+        request.args.get('company_id', '')
+    )
+
+    if not is_valid:
+        return jsonify({'error': 'Invalid HMAC. Request not from Genuka.'}), 401
+
+    # HMAC valid — proceed with token exchange
+    return jsonify({'message': 'HMAC validated'}), 200
+```
+
+</CodeGroup>
+
+<Note>
+All examples include **replay attack prevention** by validating the timestamp (requests older than 5 minutes are rejected).
+</Note>
+
 ---
 
 ## Example verification flow
 
-1. Genuka sends an installation callback to your app:
+<Steps>
+  <Step title="Receive callback from Genuka">
+    Genuka sends an installation callback to your app with the following parameters:
+    ```
+    /callback?company_id=123&timestamp=1731456700&hmac=abcd1234&code=xyz
+    ```
+  </Step>
+  <Step title="Validate HMAC before processing">
+    Extract parameters and validate the HMAC **before any other processing**:
 
-```
-/callback?company_id=123&timestamp=1731456700&hmac=abcd1234&code=xyz
-```
+    <CodeGroup>
+    ```javascript Node.js
+    // Express / Next.js example
+    app.get('/callback', async (req, res) => {
+      const { company_id, timestamp, hmac, code } = req.query;
 
-2. Extract parameters and validate the HMAC before any other processing:
+      const isValid = validateHmac({
+        hmac: String(hmac || ''),
+        timestamp: String(timestamp || ''),
+        companyId: String(company_id || ''),
+      });
 
-```javascript
-// Express / Next.js example
-app.get('/callback', async (req, res) => {
-  const { company_id, timestamp, hmac, code } = req.query;
+      if (!isValid) {
+        return res.status(401).json({ error: 'Invalid HMAC. Request not from Genuka.' });
+      }
 
-  const isValid = validateHmac({
-    hmac: String(hmac || ''),
-    timestamp: String(timestamp || ''),
-    companyId: String(company_id || ''),
-  });
+      // HMAC valid — proceed to exchange the code for an access token
+      res.status(200).send('HMAC validated — proceeding with token exchange');
+    });
+    ```
 
-  if (!isValid) {
-    return res.status(401).json({ error: 'Invalid HMAC. Request not from Genuka.' });
-  }
+    ```php PHP
+    // Laravel example
+    Route::get('/callback', function (Request $request) {
+        $isValid = validateHmac(
+            $request->query('hmac', ''),
+            $request->query('timestamp', ''),
+            $request->query('company_id', '')
+        );
 
-  // HMAC valid — proceed to exchange the code for an access token
-  // (call your token exchange logic here)
+        if (!$isValid) {
+            return response()->json(['error' => 'Invalid HMAC. Request not from Genuka.'], 401);
+        }
 
-  res.status(200).send('HMAC validated — proceeding with token exchange');
-});
-```
+        // HMAC valid — proceed to exchange the code for an access token
+        return response()->json(['message' => 'HMAC validated']);
+    });
+    ```
+
+    ```python Python
+    # Django example
+    from django.http import JsonResponse
+
+    def callback(request):
+        is_valid = validate_hmac(
+            request.GET.get('hmac', ''),
+            request.GET.get('timestamp', ''),
+            request.GET.get('company_id', '')
+        )
+
+        if not is_valid:
+            return JsonResponse({'error': 'Invalid HMAC. Request not from Genuka.'}, status=401)
+
+        # HMAC valid — proceed to exchange the code for an access token
+        return JsonResponse({'message': 'HMAC validated'})
+    ```
+    </CodeGroup>
+  </Step>
+  <Step title="Exchange code for access token">
+    Once HMAC is validated, proceed to exchange the `code` for an access token. See the [Authentication guide](/getting-started/authentication) for details.
+  </Step>
+</Steps>
 
 ---
 
