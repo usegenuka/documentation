@@ -31,7 +31,8 @@
               "getting-started/hmac-verification",
               "getting-started/api-response",
               "getting-started/webhook",
-              "getting-started/webhook-verify"
+              "getting-started/webhook-verify",
+              "getting-started/test-app"
             ]
           },
           {

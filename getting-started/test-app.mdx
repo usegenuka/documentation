@@ -1,0 +1,32 @@
+---
+title: "Application testing"
+sidebarTitle: "App testing"
+description: "How to test your app on Genuka?"
+
+---
+
+<Info>When you create an application on the platform, you have two versions: a production version and a staging version.</Info>
+
+To test your application on Genuka, you need to retrieve your staging credentials.
+
+<img 
+  src="/images/token-informations.png" 
+  alt=""
+  height="100"
+  className="rounded-lg"
+/>
+
+You must switch your dashboard to staging mode. Once in staging mode, you will select the application you wish to test and copy your various credentials, namely the Client Secret and the Client ID used for authentication.
+
+<img 
+  src="/images/staging-mode.png" 
+  alt=""
+  height="100"
+  className="rounded-lg"
+/>
+
+Make sure you are in staging mode for testing.
+
+Once this is done, you will be redirected to your Genuka test account here: [Staging Dashboard](https://staging.genuka.com) and login with your test account credentials. Then go to the settings section and then to My Apps, where you can install the application.
+
+To perform local tests effectively, we recommend using [ngrok](https://ngrok.com/) or [valet](https://laravel.com/docs/11.x/valet) or any other tool for local deployments to test your application with peace of mind.
