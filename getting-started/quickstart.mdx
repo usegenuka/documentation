@@ -37,6 +37,27 @@ When you create your application on Genuka, it has two modes (production and sta
   <Step title="Create Your Application">
     From your developer dashboard, go to the **Applications** section or visit 👉 [Create an App](https://platform.genuka.com/apps/create).
 
+When creating the application, you will be asked for some additional information. Note that application creation on Genuka only occurs once a deployment is available for testing.
+
+
+| Element | Explanation | Example |
+|--------|-------------|---------|
+| name | The public name of the application displayed to users. | "Order Sync App" |
+| description | A short description explaining what the app does. | "Automatically sync your orders to your CRM." |
+| price | The price of the application (if paid). | 10 |
+| support_email | Email address where users can reach your support team. | "support@app.com" |
+| support_url | URL of your support/help center. | "https://app.com/support" |
+| redirect_url | URL where users are redirected after authentication (OAuth). | "https://app.com/auth/callback" |
+| callback_url | API endpoint that receives authorization code/token from Genuka. | "https://api.app.com/genuka/callback" |
+| webhook_url | URL to receive event notifications (orders, products, payments…). | "https://api.app.com/webhooks/genuka" |
+| terms_of_service_url | Link to your Terms of Service. | "https://app.com/terms" |
+| privacy_policy_url | Link to your Privacy Policy. | "https://app.com/privacy" |
+| medias | List of screenshots, images, or logos representing the application. | `["https://cdn.app.com/screen1.png"]` |
+| scopes | Permissions the app requires to access Genuka data. | `["orders.read", "products.write"]` |
+| plans | Pricing plans available for the application. | `{ "basic": 5, "pro": 15 }` |
+| version | Current version of the application. | "1.0.0" |
+
+
     🎉 Once created, you’ll receive your:
 
     - **Public Key** — used for client-side operations
