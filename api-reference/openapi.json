@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://staging.genuka.com"
+      "url": "https://api-staging.genuka.com"
     },
     {
       "url": "https://api.genuka.com"
