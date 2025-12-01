@@ -36,16 +36,11 @@
             ]
           },
           {
-<<<<<<< HEAD
-            "group": "Boilerplates",
-            "pages": ["boilerplates/overview"]
-=======
             "group": "Developer Tools",
             "pages": [
               "developer-tools/sdks",
               "developer-tools/boilerplates"
             ]
->>>>>>> b5c04b4 (refactor: Restructure developer tools into SDKs and Boilerplates sections)
           },
           {
             "group": "API Reference",
