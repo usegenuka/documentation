@@ -227,11 +227,11 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:contact@genuka.com"
+        "href": "mailto:hello@genuka.com"
       },
       {
         "label": "Blog",
-        "href": "https://notes.genuka.com"
+        "href": "https://genuka.com/blogs"
       }
     ],
     "primary": {
@@ -243,8 +243,11 @@
   "footer": {
     "socials": {
       "x": "https://x.com/useGenuka",
-      "facebook": "https://facebook.com/genuka",
-      "linkedin": "https://linkedin.com/company/useGenuka"
+      "facebook": "https://facebook.com/genukaofficial",
+      "linkedin": "https://linkedin.com/company/Genuka",
+      "github": "https://github.com/usegenuka",
+      "website": "https://genuka.com",
+      "instagram": "https://instagram.com/usegenuka"
     },
     "links": [
       {
@@ -261,5 +264,9 @@
         ]
       }
     ]
-  }
+  },
+  "seo": {
+    "indexing": "all"
+  },
+  "description": "Build and develop tools for Genuka ERP Ecosystem"
 }
