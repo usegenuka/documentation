@@ -222,6 +222,72 @@
             "pages": []
           }
         ]
+      },
+      {
+        "tab": "Merchant API",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "merchant-api/01-getting-started",
+              "merchant-api/02-authentication"
+            ]
+          },
+          {
+            "group": "Catalog",
+            "pages": [
+              "merchant-api/03-catalog-products",
+              "merchant-api/04-catalog-organization"
+            ]
+          },
+          {
+            "group": "Customers & CRM",
+            "pages": [
+              "merchant-api/05-customers-crm"
+            ]
+          },
+          {
+            "group": "Commerce",
+            "pages": [
+              "merchant-api/06-orders-sales",
+              "merchant-api/07-discounts-delivery",
+              "merchant-api/08-payments-pos"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "merchant-api/09-inventory-stock",
+              "merchant-api/10-suppliers-procurement",
+              "merchant-api/11-accounting-finance"
+            ]
+          },
+          {
+            "group": "Messaging",
+            "pages": [
+              "merchant-api/12-inbox-messaging",
+              "merchant-api/13-whatsapp",
+              "merchant-api/14-marketing-campaigns"
+            ]
+          },
+          {
+            "group": "Content & More",
+            "pages": [
+              "merchant-api/15-content-cms",
+              "merchant-api/16-booking-availability",
+              "merchant-api/17-analytics-reporting",
+              "merchant-api/18-automation-workflows"
+            ]
+          },
+          {
+            "group": "Platform",
+            "pages": [
+              "merchant-api/19-company-settings",
+              "merchant-api/20-developer-apps",
+              "merchant-api/21-payment-gateways"
+            ]
+          }
+        ]
       }
     ]
   },
